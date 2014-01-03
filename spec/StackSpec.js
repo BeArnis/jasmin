@@ -1,5 +1,5 @@
-/*global describe, it, expect, IS, Stack_init, a, p, s, Stack_pop, Stack_is_empty, Stack_push, renum, restack */
-describe("Stack", function () {
+/*global describe, it, expect, stack_init, stack_pop, stack_is_empty, stack_push, renum, restack */
+describe("stack", function () {
   var a = new Stack_init();
   var s = new Stack_init();
   var p = 9;
@@ -7,33 +7,33 @@ describe("Stack", function () {
 
 
   it("should be empty after init", function () {
-    expect(Stack_init()).toBeDefined;
+    expect(stack_init()).toBeDefined;
   });
 
-  it("Is stack empty", function () {
-    expect(Stack_is_empty(a)).toBe(true);
+  it("should be empty if nothing has been done to it", function () {
+    expect(stack_is_empty(a)).toBe(true);
   });
 
-  it("Pop an empty stack", function () {
-    expect(Stack_pop(a)).toEqual("error");
+  it("should return an error if we try to take something out of it if it is empty", function () {
+    expect(stack_pop(a)).toEqual("error");
   });
 
-  it("Not empty after push", function () {
-    expect(Stack_is_empty(Stack_push(a, p))).toBe(false);
+  it("should not be empty if we have put something in it", function () {
+    expect(stack_is_empty(stack_push(a, p))).toBe(false);
   });
 
-  it("Push value is the same as pop value", function () {
-    expect(Stack_pop(Stack_push(a, 9))).toEqual(p);
+  it("should return the same value we have put inside it", function () {
+    expect(stack_pop(stack_push(a, 9))).toEqual(p);
   });
 
-  it("Should be empty after push and pop", function () {
-    Stack_push(s, 9);
-    Stack_pop(s);
-    expect(Stack_is_empty(s)).toBe(true);
+  it("should be empty after we tied to put one element in and take one element out", function () {
+    stack_push(s, 9);
+    stack_pop(s);
+    expect(stack_is_empty(s)).toBe(true);
   });
 
-  it("Multipush should get back the same values in the revers order", function () {
-    
+  it("should take some elements and return them in the reverse order", function () {
+
     var num = [1, 2, 3, 4];
 
     var renum = [4, 3, 2, 1];
@@ -41,11 +41,11 @@ describe("Stack", function () {
     var restack = [];
 
     for (i = 0; i < 4; i++) {
-      Stack_push(a, num[i]);
+      stack_push(a, num[i]);
     }
 
     for (i = 0; i < 4; i++) {
-      restack[i] = Stack_pop(a);
+      restack[i] = stack_pop(a);
     }
 
     expect(restack).toEqual(renum);
