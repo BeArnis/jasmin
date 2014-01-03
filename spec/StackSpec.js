@@ -10,29 +10,29 @@ describe("stack", function () {
     expect(stack_init()).toBeDefined;
   });
 
-  it("Is stack empty", function () {
+  it("should be empty if nothing has been done to it", function () {
     expect(stack_is_empty(a)).toBe(true);
   });
 
-  it("Pop an empty stack", function () {
+  it("should return an error if we try to take something out of it if it is empty", function () {
     expect(stack_pop(a)).toEqual("error");
   });
 
-  it("Not empty after push", function () {
+  it("should not be empty if we have put something in it", function () {
     expect(stack_is_empty(stack_push(a, p))).toBe(false);
   });
 
-  it("Push value is the same as pop value", function () {
+  it("should return the same value we have put inside it", function () {
     expect(stack_pop(stack_push(a, 9))).toEqual(p);
   });
 
-  it("Should be empty after push and pop", function () {
+  it("should be empty after we tied to put one element in and take one element out", function () {
     stack_push(s, 9);
     stack_pop(s);
     expect(stack_is_empty(s)).toBe(true);
   });
 
-  it("Multipush should get back the same values in the revers order", function () {
+  it("should take many elements and return them in the reverse order", function () {
 
     var num = [1, 2, 3, 4];
 

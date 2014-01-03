@@ -1,5 +1,5 @@
 function stack_init() {
-  var stack = new array();
+  var stack = new Array();
   return stack;
 }
 
