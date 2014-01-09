@@ -1,7 +1,7 @@
 /*global describe, it, expect, stack_init, stack_pop, stack_is_empty, stack_push, renum, restack */
 describe("stack", function () {
-  var a = new stack_init();
-  var s = new stack_init();
+  var a = stack_init();
+  var s = stack_init();
   var p = 9;
   var i;
 
@@ -23,13 +23,17 @@ describe("stack", function () {
   });
 
   it("should return the same value we have put inside it", function () {
+    s = stack_init();
+    stack_push(s, 10);
+    var v = stack_pop(s);
     expect(stack_pop(stack_push(a, 9))).toEqual(p);
   });
 
   it("should be empty after we tied to put one element in and take one element out", function () {
     stack_push(s, 9);
-    stack_pop(s);
+    var v = stack_pop(s);
     expect(stack_is_empty(s)).toBe(true);
+    expect(v).toEqual(9);
   });
 
   it("should take many elements and return them in the reverse order", function () {
